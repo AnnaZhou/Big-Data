@@ -1,0 +1,21 @@
+impala-shell
+
+CREATE EXTERNAL TABLE airlines (  
+ code STRING,  
+ name STRING )  
+ROW FORMAT DELIMITED  
+FIELDS TERMINATED BY '\t'  
+STORED AS TEXTFILE  
+LOCATION '/data/airlines’;
+
+create EXTERNAL TABLE prospects (id INT,name STRING COMMENT 'Include surname', email STRING, active BOOLEAN COMMENT 'True, if on mailing list', last_contact TIMESTAMP) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LOCATION '/dept/sales/prospects’;
+
+INSERT INTO prospects VALUES(1234567,'Anna','zz3kb@mail.missouri.edu',True,'02042015’);
+
+show tables;
+
+create TABLE order_details (order_id INT, prod_id INT) STORED AS PARQUETFILE;
+
+DESCRIBE order_details;
+
+quit();
